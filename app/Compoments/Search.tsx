@@ -25,9 +25,11 @@ const Search = () => {
           />
           <div className="flex items-center gap-4">
             <Bell className="cursor-pointer hover:text-blue-400 transition" />
-            <div className="w-10 h-10 border font-bold flex justify-center items-center border-gray-900 bg-[#0F0F0F] rounded-full cursor-pointer hover:ring-2 hover:ring-blue-400 transition">
-              {(session as any)?.user?.name[0]}
-            </div>
+           {session?.user && (
+    <div className="w-10 h-10 border font-bold flex justify-center items-center border-gray-900 bg-[#0F0F0F] rounded-full cursor-pointer hover:ring-2 hover:ring-blue-400 transition">
+      {(session as any)?.user.name[0]}
+    </div>
+  )}
           </div>
         </div>
   )
