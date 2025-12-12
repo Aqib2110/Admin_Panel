@@ -1,7 +1,7 @@
 "use client"
 
-import React, { ReactNode, useState } from "react";
-import { Home, BarChart2, Users, Settings, Bell } from "lucide-react";
+import React, { useState } from "react";
+import { Home, BarChart2, Users, Settings } from "lucide-react";
 import Link from "next/link";
 
 export default function MyLayout({children}:{
@@ -56,7 +56,7 @@ const navItems = [
 ];
 
   return (
-   <div className="h-screen border text-white bg-[#0d0d0d] flex relative">
+   <div className="h-screen text-white bg-[#0d0d0d] flex relative">
       <div className="m-2  z-10">
  <aside className="w-64 bg-[#0F0F0F]  rounded-xl p-6 border-r border-gray-900 transparent-none h-full ">
         <h2 className="text-3xl font-bold mb-10 tracking-widest">ADMIN</h2>

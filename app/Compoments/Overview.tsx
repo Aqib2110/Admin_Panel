@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Card, CardContent, CardTitle,CardHeader } from "@/components/ui/card";
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar } from "recharts";
 import { motion } from "framer-motion";

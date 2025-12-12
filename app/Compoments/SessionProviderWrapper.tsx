@@ -4,7 +4,7 @@ import { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 const SessionProviderWrapper = ({children,session}:{
   children: React.ReactNode,
-  session: Session | null
+  session?: Session | null
 }) => {
   return (
     <SessionProvider session={session}>

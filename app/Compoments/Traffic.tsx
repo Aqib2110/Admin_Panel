@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar } from "recharts";
