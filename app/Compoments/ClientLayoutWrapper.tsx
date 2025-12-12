@@ -2,9 +2,8 @@
 
 import React from "react";
 import MyLayout from "./MyLayout";
-import SessionProviderWrapper from "./SessionProviderWrapper";
 import type { Session } from "next-auth";
-
+import { SessionProvider } from "next-auth/react";
 interface Props {
   children: React.ReactNode;
   session?: Session | null;
@@ -13,9 +12,9 @@ interface Props {
 const ClientLayoutWrapper = ({ children, session }: Props) => {
 
   return (
-    <SessionProviderWrapper session={session}>
+    <SessionProvider session={session}>
       <MyLayout>{children}</MyLayout>
-    // </SessionProviderWrapper>
+    </SessionProvider>
   );
 };
 

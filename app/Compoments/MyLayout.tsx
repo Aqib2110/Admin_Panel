@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Home, BarChart2, Users, Settings } from "lucide-react";
 import Link from "next/link";
 
@@ -8,6 +8,11 @@ export default function MyLayout({children}:{
     children:React.ReactNode
 })
  {
+const [mounted, setMounted] = useState(false);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
 
 const [nav, setnav] = useState('Home')
 const [subNav, setsubNav] = useState('Overview');
@@ -54,7 +59,7 @@ const navItems = [
     ]
   }
 ];
-
+if (!mounted) return null; 
   return (
    <div className="h-screen text-white bg-[#0d0d0d] flex relative">
       <div className="m-2  z-10">

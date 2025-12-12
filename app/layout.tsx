@@ -46,7 +46,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientLayoutWrapper from "./Compoments/ClientLayoutWrapper";
 import { getServerSession } from "next-auth";
-
+import { SessionProvider } from "next-auth/react";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
@@ -61,16 +61,17 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getServerSession();
-
+  console.log(session);
   return (
-    <html lang="en">
-      <body  className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* <ClientLayoutWrapper session={session}> */}
-                  <ClientLayoutWrapper>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+     
+      <body className='antialiased'>
+ 
+     <ClientLayoutWrapper session={session}>
+        {children}
+     </ClientLayoutWrapper>
+</body>
 
-          {children}
-        </ClientLayoutWrapper>
-      </body>
     </html>
   );
 }
