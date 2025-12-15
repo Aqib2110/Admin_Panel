@@ -5,7 +5,8 @@ import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 import Search from "./Search";
 import {motion} from "framer-motion";
-
+import { useContext } from "react";
+import { MyContext } from "./ContextProvider";
 
 type Role = "admin" | "editor" | "user";
 
@@ -20,6 +21,8 @@ interface Permissions {
 }
 
 export default function RoleNPermissions() {
+  const {day} = useContext(MyContext);
+
   const [permissions, setPermissions] = useState<Permissions>({
     admin: {
       manageUsers: true,
@@ -56,8 +59,8 @@ export default function RoleNPermissions() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-5xl font-extrabold tracking-wide mb-4"
-          >
+           className={`${day ? "text-black" : "text-white"} text-5xl font-extrabold tracking-wide mb-4`}
+        >
            User Roles & Permissions
           </motion.h1>
 
@@ -66,9 +69,9 @@ export default function RoleNPermissions() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1,delay:0.2 }}
     className=" space-y-6">
-      <Card className="bg-[#0F0F0F] border-gray-800">
+      <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-800"} border`}>
         <CardHeader>
-          <CardTitle className="text-white text-xl">Roles & Permissions</CardTitle>
+          <CardTitle className={`${day ? "text-black" : "text-white"} text-xl`}>Roles & Permissions</CardTitle>
         </CardHeader>
          <div>
 
@@ -77,9 +80,9 @@ export default function RoleNPermissions() {
           {(
             Object.entries(permissions) as [Role, RolePermissions][]
           ).map(([role, perms]) => (
-            <Card key={role} className="bg-[#181818] border-gray-700">
+            <Card key={role} className={`${day ? "bg-white" : "bg-[#181818] border-gray-700"} border`}>
               <CardHeader>
-                <CardTitle className="capitalize text-white">{role}</CardTitle>
+                <CardTitle className={`capitalize ${day ? "text-black" : "text-white"}`}>{role}</CardTitle>
               </CardHeader>
 
               <CardContent className="space-y-4">
@@ -89,7 +92,7 @@ export default function RoleNPermissions() {
                       key={perm}
                       className="flex justify-between items-center py-2 border-b border-gray-800"
                     >
-                      <span className="text-gray-300 capitalize">
+                      <span className={`${day ? "text-gray-500" : "text-gray-300"} capitalize`}>
                         {perm.replace(/([A-Z])/g, " $1")}
                       </span>
 

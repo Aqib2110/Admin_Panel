@@ -6,6 +6,8 @@ import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tool
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import Search from "./Search";
+import { useContext } from "react";
+import { MyContext } from "./ContextProvider";
 
 const metricsData = [
   { name: "Jan", value: 40 },
@@ -35,7 +37,7 @@ const Overview = () => {
           ]);
         }, 500);
       }, []);
-
+const {day} = useContext(MyContext);
        const cards = [
     { label: "Revenue", value: metrics[0], color: "from-purple-600 to-blue-500" },
     { label: "Orders", value: metrics[1], color: "from-green-400 to-teal-500" },
@@ -52,7 +54,7 @@ const Overview = () => {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-5xl font-extrabold tracking-wide mb-8"
+          className={`${day ? "text-black" : "text-white"} text-5xl font-extrabold tracking-wide mb-8`}
         >
           Dashboard
         </motion.h1>
@@ -66,12 +68,12 @@ const Overview = () => {
               animate={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.05, rotateX: 5, rotateY: 5 }}
               transition={{ type: "spring", stiffness: 300,duration: 1,delay:0.2 }}>
-             <Card key={card.label} className="bg-[#0F0F0F] border border-gray-900  rounded-3xl shadow-xl">
+             <Card key={card.label} className={`${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} border   rounded-3xl shadow-xl`}>
               <CardHeader>
-                <CardTitle className="text-white">{card.label}</CardTitle>
+                <CardTitle className={`${day ? "text-black" : "text-white"}`}>{card.label}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-4xl font-bold ">
+                <p className={`text-4xl font-bold ${day ? "text-gray-500" : " "} `}>
                   <CountUp
                     end={card.label === "Growth" ? card.value/100 : card.value}
                     duration={2}
@@ -90,9 +92,9 @@ const Overview = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{duration:1,delay:0.4}}
         className="grid grid-cols-1  md:grid-cols-2 gap-8">
-          <Card className="bg-[#0F0F0F]  border-gray-900 p-6 rounded-3xl shadow-2xl">
+          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} p-6 border rounded-3xl shadow-2xl`}>
             <CardContent>
-              <CardTitle className=" text-white mb-4 ">Revenue Overview</CardTitle>
+              <CardTitle className={`${day ? "text-black" : "text-white"} mb-4 `}>Revenue Overview</CardTitle>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={metricsData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
@@ -111,9 +113,9 @@ const Overview = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-[#0F0F0F] border-gray-900 p-6 rounded-3xl shadow-2xl">
+          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} p-6 border rounded-3xl shadow-2xl`}>
             <CardContent>
-              <CardTitle className=" text-white mb-4 ">Orders</CardTitle>
+              <CardTitle className={`${day ? "text-black" : "text-white"} mb-4 `}>Orders</CardTitle>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={metricsData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
@@ -133,28 +135,28 @@ const Overview = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{duration:1,delay:0.6}}
         >
-        <Card className="bg-[#0F0F0F] border-gray-900 p-6 rounded-3xl shadow-2xl">
+          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} p-6 border rounded-3xl shadow-2xl`}>
           <CardContent>
-              <CardTitle className="text-white mb-4 ">Recent Orders</CardTitle>
+              <CardTitle className={`${day ? "text-black" : "text-white"} mb-4 `}>Recent Orders</CardTitle>
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
                   <tr className="border-b border-gray-700">
-                    <th className="py-2 text-black px-4">Order ID</th>
-                    <th className="py-2 text-black px-4">Customer</th>
-                    <th className="py-2 text-black px-4">Product</th>
-                    <th className="py-2 text-black px-4">Amount</th>
-                    <th className="py-2 text-black px-4">Status</th>
+                    <th className={`py-2 ${day ? "text-gray-500" : "text-black"} px-4`}>Order ID</th>
+                    <th className={`py-2 ${day ? "text-gray-500" : "text-black"} px-4`}>Customer</th>
+                    <th className={`py-2 ${day ? "text-gray-500" : "text-black"} px-4`}>Product</th>
+                    <th className={`py-2 ${day ? "text-gray-500" : "text-black"} px-4`}>Amount</th>
+                    <th className={`py-2 ${day ? "text-gray-500" : "text-black"} px-4`}>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {recentOrders.map((order) => (
                     <tr key={order.id} className="border-b border-gray-800 hover:bg-gray-800 transition">
-                      <td className="py-2 text-white px-4">{order.id}</td>
-                      <td className="py-2 text-white px-4">{order.customer}</td>
-                      <td className="py-2 text-white px-4">{order.product}</td>
-                      <td className="py-2 text-white px-4">{order.amount}</td>
-                      <td className="py-2 text-white px-4">{order.status}</td>
+                      <td className={`py-2 ${day ? "text-black" : "text-white"} px-4`}>{order.id}</td>
+                      <td className={`py-2 ${day ? "text-black" : "text-white"} px-4`}>{order.customer}</td>
+                      <td className={`py-2 ${day ? "text-black" : "text-white"} px-4`}>{order.product}</td>
+                      <td className={`py-2 ${day ? "text-black" : "text-white"} px-4`}>{order.amount}</td>
+                      <td className={`py-2 ${day ? "text-black" : "text-white"} px-4`}>{order.status}</td>
                     </tr>
                   ))}
                 </tbody>

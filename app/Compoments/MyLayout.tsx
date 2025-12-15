@@ -3,22 +3,19 @@
 import React, { useState,useEffect } from "react";
 import { Home, BarChart2, Users, Settings } from "lucide-react";
 import Link from "next/link";
-
+import { useContext } from "react";
+import { MyContext } from "./ContextProvider";
 export default function MyLayout({children}:{
     children:React.ReactNode
 })
  {
-const [mounted, setMounted] = useState(false);
-
-useEffect(() => {
-  setMounted(true);
-}, []);
-
+const {day} = useContext(MyContext);
 const [nav, setnav] = useState('Home')
 const [subNav, setsubNav] = useState('Overview');
 const handleClick = (label:string)=>{
   setnav(label);
 }
+console.log(day,"my");
 const handleClickSub = (label:string)=>{
   setsubNav(label);
 }
@@ -59,17 +56,16 @@ const navItems = [
     ]
   }
 ];
-if (!mounted) return null; 
   return (
-   <div className="h-screen text-white bg-[#0d0d0d] flex relative">
+   <div className={`h-screen text-white ${day ? "bg-[#F7F7F7]" : "bg-[#0d0d0d]" }  flex relative`}>
       <div className="m-2  z-10">
- <aside className="w-64 bg-[#0F0F0F]  rounded-xl p-6 border-r border-gray-900 transparent-none h-full ">
-        <h2 className="text-3xl font-bold mb-10 tracking-widest">ADMIN</h2>
+ <aside className={`w-64 ${day ? "bg-white border" : "bg-[#0F0F0F] border-r border-gray-900"}  rounded-xl p-6  transparent-none h-full `}>
+        <h2 className={`${day ? "text-black" : "text-white"} text-3xl font-bold mb-10 tracking-widest`}>ADMIN</h2>
         <nav className="space-y-3 ">
           {navItems.map((item) => (
             <div key={item.label}>
             <div
-              className={`flex items-center gap-4 ${nav === item.label ? 'text-blue-400' : 'text-white'} cursor-pointer hover:text-blue-400 transition-all duration-300`}
+              className={`flex items-center gap-4 ${nav === item.label ? 'text-blue-400' : `${day ? "text-black" : "text-white"}`} cursor-pointer hover:text-blue-400 transition-all duration-300`}
               onClick={() => handleClick(item.label)}
             >
               <item.icon />
@@ -78,7 +74,7 @@ if (!mounted) return null;
             <div>
              {item.subpages.map((subpage)=>{
             return <ol key={subpage.routeName} className={`flex flex-col ${nav === item.label ? 'block' : 'hidden'} text-start mt-2`}>
-              <li className={`text-sm list-disc ml-6 ${subNav === subpage.routeName ? 'text-blue-200' : 'text-gray-500'} text-start  cursor-pointer hover:text-blue-200 transition-all duration-300`}
+              <li className={`text-sm list-disc ml-6 ${subNav === subpage.routeName ? `${day ? "text-gray-500" : "text-blue-200"}` : `${day ? "text-gray-400" :  "text-gray-500"}`} text-start  cursor-pointer hover:text-blue-200 transition-all duration-300`}
               onClick={()=>handleClickSub(subpage.routeName)}
               >
                 <Link href={subpage.routeLink}>

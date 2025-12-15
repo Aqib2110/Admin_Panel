@@ -5,6 +5,8 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar } from "recharts";
 import CountUp from "react-countup";
 import Search from "./Search";
+import { useContext } from "react";
+import { MyContext } from "./ContextProvider";
 
 const trafficSummary = [
   { label: "Total Visitors", value: 1254300 },
@@ -38,6 +40,8 @@ const topCountries = [
 ];
 
 const Traffic = () => {
+  const {day} = useContext(MyContext);
+
   return (
     <main className="flex-1 p-10 space-y-10 overflow-auto h-full">
       <Search />
@@ -46,8 +50,8 @@ const Traffic = () => {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-5xl font-extrabold tracking-wide mb-4"
-      >
+        className={`${day ? "text-black" : "text-white"} text-5xl font-extrabold tracking-wide mb-8`}
+        >
         Traffic Analytics
       </motion.h1>
 
@@ -60,12 +64,12 @@ const Traffic = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 250,duration:1,delay:0.2 }}
           >
-            <Card className="bg-[#0F0F0F] border border-gray-900  rounded-3xl shadow-xl">
+        <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-900"} border  rounded-3xl shadow-xl`}>
               <CardHeader>
-                <CardTitle className="text-white">{item.label}</CardTitle>
+                <CardTitle className={`${day ? "text-black" : "text-white"}`}>{item.label}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-4xl font-bold ">
+                <p className={`text-4xl font-bold ${day ? "text-gray-500" : ""}`}>
                   <CountUp
                     end={item.value}
                     duration={2}
@@ -84,9 +88,9 @@ const Traffic = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1,delay:0.4 }}
       >
-        <Card className="bg-[#0F0F0F] border-gray-900  rounded-3xl shadow-2xl">
+        <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-900"} border  rounded-3xl shadow-2xl`}>
           <CardHeader>
-            <CardTitle className="text-white">Monthly Traffic Trend</CardTitle>
+            <CardTitle className={`${day ? "text-black" : "text-white"}`}>Monthly Traffic Trend</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={320}>
@@ -120,9 +124,9 @@ const Traffic = () => {
         transition={{ duration: 1,delay:0.6 }}
         className="grid grid-cols-1 lg:grid-cols-2 gap-8"
       >
-        <Card className="bg-[#0F0F0F] border-gray-900  rounded-3xl shadow-2xl">
+        <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-900"} border  rounded-3xl shadow-2xl`}>
           <CardHeader>
-            <CardTitle className="text-white">Traffic Distribution</CardTitle>
+            <CardTitle className={`${day ? "text-black" : "text-white"}`}>Traffic Distribution</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -137,23 +141,23 @@ const Traffic = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-[#0F0F0F] border-gray-900  rounded-3xl shadow-2xl">
+        <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-900"} border  rounded-3xl shadow-2xl`}>
           <CardHeader>
-            <CardTitle className="text-white">Top Countries</CardTitle>
+            <CardTitle className={`${day ? "text-black" : "text-white"}`}>Top Countries</CardTitle>
           </CardHeader>
           <CardContent>
             <table className="w-full text-left">
               <thead>
                 <tr className="border-b border-gray-700">
-                  <th className="py-2 px-4 text-gray-400">Country</th>
-                  <th className="py-2 px-4 text-gray-400">Visitors</th>
+                  <th className="py-2 px-4 text-gray-500">Country</th>
+                  <th className="py-2 px-4 text-gray-500">Visitors</th>
                 </tr>
               </thead>
               <tbody>
                 {topCountries.map((item, idx) => (
                   <tr key={idx} className="border-b border-gray-800 hover:bg-gray-800/50 transition">
-                    <td className="py-2 px-4 text-white">{item.country}</td>
-                    <td className="py-2 px-4 text-white">{item.visitors}</td>
+                    <td className={`py-2 px-4 ${day ? "text-black" : "text-white"}`}>{item.country}</td>
+                    <td className={`py-2 px-4 ${day ? "text-black" : "text-white"}`}>{item.visitors}</td>
                   </tr>
                 ))}
               </tbody>

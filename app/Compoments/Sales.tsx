@@ -16,6 +16,8 @@ import {
 import CountUp from "react-countup";
 import Search from "./Search";
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { MyContext } from "./ContextProvider";
 
 const salesData = [
   { month: "Jan", sales: 4200 },
@@ -34,6 +36,8 @@ const productSales = [
 ];
 
 export default function Sales() {
+  const {day} = useContext(MyContext);
+
   return (
     <main className="flex-1 p-10 space-y-10 overflow-auto h-full">
 
@@ -43,8 +47,8 @@ export default function Sales() {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-5xl font-extrabold tracking-wide mb-8"
-      >
+        className={`${day ? "text-black" : "text-white"} text-5xl font-extrabold tracking-wide mb-8`}
+        >
         Sales Analytics
       </motion.h1>
 
@@ -54,34 +58,34 @@ export default function Sales() {
                     transition={{delay:0.2,duration:1}}
                      className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         
-        <Card className="bg-[#0F0F0F] border border-gray-800 backdrop-blur-xl">
+        <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-800" } border  backdrop-blur-xl`}>
           <CardHeader className="flex justify-between">
-            <CardTitle className="text-white">Total Sales</CardTitle>
+            <CardTitle className={`${day ? "text-black" : "text-white"}`}>Total Sales</CardTitle>
             <ArrowUpRight className="text-green-400" />
           </CardHeader>
-          <CardContent className="text-3xl font-bold">
+          <CardContent className={`text-3xl ${day ? "text-gray-500" : " "} font-bold`}>
             <CountUp end={70200} duration={2} prefix="$" />
             <p className="text-sm text-green-400 mt-1">+12% from last month</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-[#0F0F0F] border border-gray-800 backdrop-blur-xl">
+        <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-800" } border  backdrop-blur-xl`}>
           <CardHeader className="flex justify-between">
-            <CardTitle className="text-white">Average Order Value</CardTitle>
+            <CardTitle className={`${day ? "text-black" : "text-white"}`}>Average Order Value</CardTitle>
             <ArrowUpRight className="text-green-400" />
           </CardHeader>
-          <CardContent className="text-3xl font-bold">
+          <CardContent className={`text-3xl ${day ? "text-gray-500" : " "} font-bold`}>
             <CountUp end={86} duration={2} prefix="$" />
             <p className="text-sm text-green-400 mt-1">+4% from last month</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-[#0F0F0F] border border-gray-800 backdrop-blur-xl">
+        <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-800" } border  backdrop-blur-xl`}>
           <CardHeader className="flex justify-between">
-            <CardTitle className="text-white">Refunds</CardTitle>
+            <CardTitle className={`${day ? "text-black" : "text-white"}`}>Refunds</CardTitle>
             <ArrowDownRight className="text-red-400" />
           </CardHeader>
-          <CardContent className="text-3xl font-bold">
+          <CardContent className={`text-3xl ${day ? "text-gray-500" : " "} font-bold`}>
             <CountUp end={320} duration={2} />
             <p className="text-sm text-red-400 mt-1">-3% from last month</p>
           </CardContent>
@@ -94,9 +98,9 @@ export default function Sales() {
                     transition={{delay:0.4,duration:1}}
                      className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
-        <Card className="bg-[#0F0F0F] border border-gray-800 backdrop-blur-xl">
+        <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-800" } border  backdrop-blur-xl`}>
           <CardHeader>
-            <CardTitle className="text-white">Monthly Sales</CardTitle>
+            <CardTitle className={`${day ? "text-black" : "text-white"}`}>Monthly Sales</CardTitle>
           </CardHeader>
           <CardContent className="h-72">
             <ResponsiveContainer width="100%" height="100%">
@@ -111,9 +115,9 @@ export default function Sales() {
           </CardContent>
         </Card>
 
-        <Card className="bg-[#0F0F0F] border border-gray-800 backdrop-blur-xl">
+        <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-800" } border  backdrop-blur-xl`}>
           <CardHeader>
-            <CardTitle className="text-white">Product Category Sales</CardTitle>
+            <CardTitle className={`${day ? "text-black" : "text-white"}`}>Product Category Sales</CardTitle>
           </CardHeader>
           <CardContent className="h-72">
             <ResponsiveContainer width="100%" height="100%">
