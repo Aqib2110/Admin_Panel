@@ -58,7 +58,16 @@ const navItems = [
 ];
   return (
    <div className={`h-screen text-white ${day ? "bg-[#F7F7F7]" : "bg-[#0d0d0d]" }  flex relative`}>
-      <div className="m-2  z-10">
+
+
+
+<div className="absolute border  top-[-20%] right-[30%] w-[300px] h-[100vh]
+  bg-gradient-to-b from-blue-500/60 via-blue-500/10 to-transparent
+  blur-[80px] rotate-[8deg] animate-pulse" />
+
+
+
+      <div className="m-2 ">
  <aside className={`w-64 ${day ? "bg-white border" : "bg-[#0F0F0F] border-r border-gray-900"}  rounded-xl p-6  transparent-none h-full `}>
         <h2 className={`${day ? "text-black" : "text-white"} text-3xl font-bold mb-10 tracking-widest`}>ADMIN</h2>
         <nav className="space-y-3 ">
