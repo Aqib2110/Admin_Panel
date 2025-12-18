@@ -39,7 +39,7 @@ export default function Sales() {
   const {day} = useContext(MyContext);
 
   return (
-    <main className="flex-1 p-10 space-y-10 overflow-auto h-full">
+    <main className="flex-1 p-10 z-10 space-y-10 overflow-auto h-full">
 
       <Search />
 
