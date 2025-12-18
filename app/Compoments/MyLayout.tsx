@@ -63,16 +63,16 @@ const navItems = [
 
 <div className="absolute border z-0 top-[-50%] right-[40%] w-[300px] h-[100vh]
   bg-gradient-to-b from-blue-500/60 via-blue-500/10 to-transparent
- blur-[80px]   animate-pulse" />
+ blur-[80px]   " />
   <div className="absolute border z-0 overflow-hidden  bottom-[-50%] right-[40%] w-[300px] h-[100vh]
   bg-gradient-to-b from-blue-500/60 via-blue-500/10 to-transparent
-blur-[80px]  rotate-[180deg] animate-pulse" />
+blur-[80px]  rotate-[180deg] " />
  <div className="absolute border z-0 overflow-hidden bottom-[2%] right-[-10%]  w-[300px] h-[100vh]
   bg-gradient-to-b from-blue-500/60 via-blue-500/10 to-transparent
-blur-[80px]  rotate-[90deg] animate-pulse" />
+blur-[80px]  rotate-[90deg] " />
   <div className="absolute border overflow-hidden z-0 left-[-10%] bottom-[2%]  w-[300px] h-[100vh]
   bg-gradient-to-b from-blue-500/60 via-blue-500/10 to-transparent
-blur-[80px]  rotate-[270deg] animate-pulse" />
+blur-[80px]  rotate-[270deg] " />
 
 
 
