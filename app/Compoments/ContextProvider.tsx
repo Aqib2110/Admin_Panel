@@ -11,7 +11,7 @@ interface MyContextType {
 export const MyContext = createContext<MyContextType>({
     day: false,
     setday: () => {},
-    openSidebar: false,
+    openSidebar: true,
     setopenSidebar: () => {}
 
 });

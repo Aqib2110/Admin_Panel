@@ -17,10 +17,10 @@ const Search = () => {
       router.push("/api/auth/signin");
     }
   }, [session, router]);
-
+console.log(openSidebar,"updated");
   return (
    <div className="flex bg-[#091729] md:bg-auto justify-between px-2 md:px-0 h-12 z-30 w-screen overflow-hidden fixed md:relative top-0 left-0 items-center md:mb-8">
-               <MenuIcon onClick={()=>{setopenSidebar(true)}} size={25} className={`${day ? "text-black" : "text-white"} block md:hidden cursor-pointer hover:text-blue-400 transition`} />
+               <MenuIcon onClick={()=>{setopenSidebar(side=>!side);}} size={25} className={`${day ? "text-black" : "text-white"} block md:hidden cursor-pointer hover:text-blue-400 transition`} />
 
           <input
             type="text"

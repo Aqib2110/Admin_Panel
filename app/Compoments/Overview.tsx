@@ -92,7 +92,7 @@ const {day} = useContext(MyContext);
         animate={{ opacity: 1, y: 0 }}
         transition={{duration:1,delay:0.4}}
         className="grid grid-cols-1  md:grid-cols-2 gap-8">
-          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} border-white px-0 md:px-6 md:py-6 py-2  border rounded-3xl shadow-2xl`}>
+          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"}  px-0 md:px-6 md:py-6 py-2   rounded-3xl shadow-2xl`}>
             <CardContent className="md:px-4 px-1">
               <CardTitle className={`${day ? "text-black" : "text-white"} text-center md:text-start mb-4 `}>Revenue Overview</CardTitle>
               <ResponsiveContainer width="100%" height={300}>
@@ -113,7 +113,7 @@ const {day} = useContext(MyContext);
             </CardContent>
           </Card>
 
-          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} px-0 md:px-6 md:py-6 py-2 border rounded-3xl shadow-2xl`}>
+          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} px-0 md:px-6 md:py-6 py-2  rounded-3xl shadow-2xl`}>
             <CardContent className="md:px-4 px-1">
               <CardTitle className={`${day ? "text-black" : "text-white"} text-center md:text-start mb-4 `}>Orders</CardTitle>
               <ResponsiveContainer width="100%" height={300}>
@@ -135,7 +135,7 @@ const {day} = useContext(MyContext);
         animate={{ opacity: 1, y: 0 }}
         transition={{duration:1,delay:0.6}}
         >
-          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} p-6 border rounded-3xl shadow-2xl`}>
+          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} p-6  rounded-3xl shadow-2xl`}>
           <CardContent>
               <CardTitle className={`${day ? "text-black" : "text-white"} mb-4 `}>Recent Orders</CardTitle>
             <div className="overflow-x-auto">
