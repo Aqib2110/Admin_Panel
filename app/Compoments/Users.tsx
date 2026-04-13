@@ -18,8 +18,8 @@ export default function Users() {
 const {day} = useContext(MyContext);
 
   return (
-     <main className="flex-1 z-10 p-10 space-y-10 overflow-auto h-full">
-      <Search />
+     <main className="flex-1 z-10 p-4 pt-12 md:p-10 space-y-10 overflow-auto h-full">
+     <Search />
 
       <motion.h1
         initial={{ opacity: 0, y: -50 }}

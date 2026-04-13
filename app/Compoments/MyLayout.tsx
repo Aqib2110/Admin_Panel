@@ -1,15 +1,16 @@
 "use client"
 
 import React, { useState,useEffect } from "react";
-import { Home, BarChart2, Users, Settings } from "lucide-react";
+import { Home, BarChart2, Users, Settings,CrossIcon } from "lucide-react";
 import Link from "next/link";
+import Search from "./Search";
 import { useContext } from "react";
 import { MyContext } from "./ContextProvider";
 export default function MyLayout({children}:{
     children:React.ReactNode
 })
  {
-const {day} = useContext(MyContext);
+const {day,openSidebar,setopenSidebar} = useContext(MyContext);
 const [nav, setnav] = useState('Home')
 const [subNav, setsubNav] = useState('Overview');
 const handleClick = (label:string)=>{
@@ -76,8 +77,10 @@ blur-[80px]  rotate-[270deg] " />
 
 
 
-      <div className="m-2 z-10 ">
- <aside className={`w-64 ${day ? "bg-white border" : "bg-[#0F0F0F] border-r border-gray-900"}  rounded-xl p-6  transparent-none h-full `}>
+      <div className={`hidden md:block md:m-2 z-30 `}>
+ <aside className={`md:w-64 ${openSidebar ? "block" : "hidden"} md:block w-full absolute md:relative ${day ? "bg-white border" : "bg-[#0F0F0F] border-r border-gray-900"}  rounded-xl p-6  transparent-none h-full `}>
+      <CrossIcon onClick={()=>{setopenSidebar(false)}} className={`${day ? "text-black" : "text-white"} block rotate-[45deg] md:hidden absolute top-3 right-3 cursor-pointer hover:text-blue-400 transition`} />
+
         <h2 className={`${day ? "text-black" : "text-white"} text-3xl font-bold mb-10 tracking-widest`}>ADMIN</h2>
         <nav className="space-y-3 ">
           {navItems.map((item) => (
@@ -109,8 +112,8 @@ blur-[80px]  rotate-[270deg] " />
       </div>
      
 
-     
   {children}
+     
       
     
 

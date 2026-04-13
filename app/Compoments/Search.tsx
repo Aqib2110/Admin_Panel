@@ -3,7 +3,7 @@ import { Bell } from "lucide-react";
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Sun,Moon } from "lucide-react";
+import { Sun,Moon,MenuIcon } from "lucide-react";
 import { useContext } from "react";
 import { MyContext } from "./ContextProvider";
 
@@ -11,7 +11,7 @@ const Search = () => {
 
  const { data: session } = useSession();
   const router = useRouter();
-  const {day,setday} = useContext(MyContext);
+  const {day,setday,openSidebar,setopenSidebar} = useContext(MyContext);
   useEffect(() => {
     if (!session?.user) {
       router.push("/api/auth/signin");
@@ -19,11 +19,13 @@ const Search = () => {
   }, [session, router]);
 
   return (
-   <div className="flex justify-between items-center mb-8">
+   <div className="flex bg-[#091729] md:bg-auto justify-between px-2 md:px-0 h-12  w-screen overflow-hidden fixed md:relative top-0 left-0 items-center md:mb-8">
+               <MenuIcon onClick={()=>{setopenSidebar(true)}} size={25} className={`${day ? "text-black" : "text-white"} block md:hidden cursor-pointer hover:text-blue-400 transition`} />
+
           <input
             type="text"
             placeholder="Search..."
-            className={`px-4 py-2 ${day ? "bg-white text-black" : "bg-[#0F0F0F] text-white border-gray-900" }  rounded-lg  w-3/4 focus:outline-none border `}
+            className={`px-4 hidden sm:block  py-2 ${day ? "bg-white text-black" : "bg-[#0F0F0F] text-white border-gray-900" }  rounded-lg  w-3/4 focus:outline-none border `}
           />
           <div className="flex items-center gap-4">
 

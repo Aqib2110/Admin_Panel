@@ -46,7 +46,7 @@ const {day} = useContext(MyContext);
   ];
 
   return (
-      <main className="flex-1 p-10 z-10 space-y-10 overflow-auto h-full">
+      <main className="flex-1 p-4 pt-12 md:p-10  z-10 space-y-10 overflow-auto h-full">
         
         <Search />
 
@@ -54,7 +54,7 @@ const {day} = useContext(MyContext);
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className={`${day ? "text-black" : "text-white"} text-5xl font-extrabold tracking-wide mb-8`}
+          className={`${day ? "text-black" : "text-white"} w-full text-center md:text-start text-5xl font-extrabold tracking-wide mb-8`}
         >
           Dashboard
         </motion.h1>
@@ -92,9 +92,9 @@ const {day} = useContext(MyContext);
         animate={{ opacity: 1, y: 0 }}
         transition={{duration:1,delay:0.4}}
         className="grid grid-cols-1  md:grid-cols-2 gap-8">
-          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} p-6 border rounded-3xl shadow-2xl`}>
-            <CardContent>
-              <CardTitle className={`${day ? "text-black" : "text-white"} mb-4 `}>Revenue Overview</CardTitle>
+          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} border-white px-0 md:px-6 md:py-6 py-2  border rounded-3xl shadow-2xl`}>
+            <CardContent className="md:px-4 px-1">
+              <CardTitle className={`${day ? "text-black" : "text-white"} text-center md:text-start mb-4 `}>Revenue Overview</CardTitle>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={metricsData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
@@ -113,9 +113,9 @@ const {day} = useContext(MyContext);
             </CardContent>
           </Card>
 
-          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} p-6 border rounded-3xl shadow-2xl`}>
-            <CardContent>
-              <CardTitle className={`${day ? "text-black" : "text-white"} mb-4 `}>Orders</CardTitle>
+          <Card className={`  ${day ? "bg-white" :  "bg-[#0F0F0F] border-gray-900"} px-0 md:px-6 md:py-6 py-2 border rounded-3xl shadow-2xl`}>
+            <CardContent className="md:px-4 px-1">
+              <CardTitle className={`${day ? "text-black" : "text-white"} text-center md:text-start mb-4 `}>Orders</CardTitle>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={metricsData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />

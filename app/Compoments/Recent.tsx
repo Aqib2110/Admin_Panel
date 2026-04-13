@@ -37,7 +37,7 @@ const activityData = [
 export default function Recent() {
   const {day} = useContext(MyContext);
   return (
-    <main className="flex-1 z-10 p-10 space-y-10 overflow-auto h-full">
+    <main className="flex-1 pt-12 z-10 p-4 md:p-10 space-y-10 overflow-auto h-full">
 
       <Search />
 
@@ -45,7 +45,7 @@ export default function Recent() {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-       className={`${day ? "text-black" : "text-white"} text-5xl font-extrabold tracking-wide mb-8`}
+       className={`${day ? "text-black" : "text-white"} text-center md:text-start text-5xl font-extrabold tracking-wide mb-8`}
         >
         Recent Activity
       </motion.h1>
