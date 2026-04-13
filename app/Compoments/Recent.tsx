@@ -55,7 +55,7 @@ export default function Recent() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-900" } border p-8 rounded-3xl shadow-2xl`}>
+        <Card className={`${day ? "bg-white" : "bg-[#0F0F0F] border-gray-900" } border p-2 md:p-8 rounded-3xl shadow-2xl`}>
           <CardContent>
             <h3 className={`text-2xl mb-6 font-semibold ${day ? "text-black" : "text-gray-200"}`}>
               Latest Events
